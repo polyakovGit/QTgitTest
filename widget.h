@@ -1,22 +1,21 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QApplication>
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QVBoxLayout>
-
+#include <QApplication>
+QT_BEGIN_NAMESPACE
+namespace Ui { class Widget; }
+QT_END_NAMESPACE
 class Widget : public QWidget
 {
     Q_OBJECT
-
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+private slots:
+    void on_btn1_clicked();
+
 private:
-    QLabel *label;
-    QPushButton *btnQuit;
-    QVBoxLayout *vbox;
+    Ui::Widget *ui;
 };
 #endif // WIDGET_H

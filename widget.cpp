@@ -1,21 +1,18 @@
 #include "widget.h"
-
+#include "ui_widget.h"
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
+    , ui(new Ui::Widget)
 {
-    label = new QLabel("Привет мир!");
-    label->setAlignment(Qt::AlignCenter);
-    btnQuit=new QPushButton("&Закрыть окно");
-    vbox=new QVBoxLayout();
-    vbox->addWidget(label);
-    vbox->addWidget(btnQuit);
-    setLayout(vbox);
-    connect(btnQuit,SIGNAL(clicked()),
-            qApp,SLOT(quit()));
-
+    ui->setupUi(this);
 }
-
 Widget::~Widget()
 {
+    delete ui;
+}
+
+void Widget::on_btn1_clicked()
+{
+    ui->label->setText("New Text");
 }
 
